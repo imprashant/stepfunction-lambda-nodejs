@@ -5,16 +5,6 @@
         "Check Stock Value": {
             "Type": "Task",
             "Resource": "${StockCheckerFunctionArn}",
-            "Retry": [
-                {
-                    "ErrorEquals": [
-                        "States.TaskFailed"
-                    ],
-                    "IntervalSeconds": 15,
-                    "MaxAttempts": 5,
-                    "BackoffRate": 1.5
-                }
-            ],
             "Next": "Buy or Sell?"
         },
         "Buy or Sell?": {
@@ -46,16 +36,6 @@
         "Buy Stock": {
             "Type": "Task",
             "Resource": "${StockBuyerFunctionArn}",
-            "Retry": [
-                {
-                    "ErrorEquals": [
-                        "States.TaskFailed"
-                    ],
-                    "IntervalSeconds": 2,
-                    "MaxAttempts": 3,
-                    "BackoffRate": 1
-                }
-            ],
             "Next": "Record Transaction"
         },
         "Record Transaction": {
@@ -81,16 +61,6 @@
                     }
                 }
             },
-            "Retry": [
-                {
-                    "ErrorEquals": [
-                        "States.TaskFailed"
-                    ],
-                    "IntervalSeconds": 20,
-                    "MaxAttempts": 5,
-                    "BackoffRate": 10
-                }
-            ],
             "End": true
         }
     }

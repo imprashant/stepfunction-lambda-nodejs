@@ -14,6 +14,7 @@ function getRandomInt(max) {
  */
 exports.lambdaHandler = async (event, context) => {
     // Check current price of the stock
-    stock_price = getRandomInt(100)  // Current stock price is mocked as a random integer between 0 and 100
+    console.log(event)
+    stock_price = event.stockPrice? event.stockPrice : getRandomInt(100)  // Current stock price is mocked as a random integer between 0 and 100
     return { 'stock_price': stock_price }
 };
