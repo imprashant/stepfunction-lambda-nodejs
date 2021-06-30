@@ -61,6 +61,12 @@
                     }
                 }
             },
+            "ResultPath": null,
+            "Next": "End"
+        },
+        "End": {
+            "Type": "Pass",
+            "ResultPath": "$.result",
             "End": true
         }
     }
